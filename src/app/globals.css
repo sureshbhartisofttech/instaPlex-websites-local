@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+:root {
+  --navy-950: #030b1d;
+  --navy-900: #0a1633;
+}
+
+/* Very subtle wiggle animation for hover effect */
+@keyframes wiggle {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Even more subtle constant movement for icons */
+@keyframes subtle-move-1 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(3px) translateY(-2px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes subtle-move-2 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-3px) translateY(2px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes subtle-move-3 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(2px) translateY(3px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes subtle-move-4 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-2px) translateY(-3px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes subtle-move-5 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(4px) translateY(1px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes subtle-move-6 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-1px) translateY(-4px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes subtle-move-7 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(2px) translateY(-2px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Updated animation for clockwise and counterclockwise movement with translation */
+@keyframes orbit-move {
+  0% {
+    transform: rotate(0deg) translateX(0) translateY(0);
+  }
+
+  25% {
+    transform: rotate(15deg) translateX(10px) translateY(-10px);
+  }
+
+  50% {
+    transform: rotate(0deg) translateX(0) translateY(0);
+  }
+
+  75% {
+    transform: rotate(-15deg) translateX(-10px) translateY(10px);
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(0) translateY(0);
+  }
+}
+
+/* Apply the updated animation to orbits */
+.orbit-1 {
+  animation: subtle-move-1 8s ease-in-out infinite, orbit-move 10s ease-in-out infinite;
+}
+
+.orbit-2 {
+  animation: subtle-move-2 10s ease-in-out infinite, orbit-move 12s ease-in-out infinite;
+}
+
+.orbit-3 {
+  animation: subtle-move-3 12s ease-in-out infinite, orbit-move 14s ease-in-out infinite;
+}
+
+.orbit-4 {
+  animation: subtle-move-4 9s ease-in-out infinite, orbit-move 16s ease-in-out infinite;
+}
+
+.orbit-5 {
+  animation: subtle-move-5 11s ease-in-out infinite, orbit-move 18s ease-in-out infinite;
+}
+
+.orbit-6 {
+  animation: subtle-move-6 13s ease-in-out infinite, orbit-move 20s ease-in-out infinite;
+}
+
+.orbit-7 {
+  animation: subtle-move-7 10s ease-in-out infinite, orbit-move 22s ease-in-out infinite;
+}
+
+/* Remove the static rotation animation from orbit-container */
+.orbit-container {
+  animation: none;
+}
+
+/* Hover effect */
+.hover-wiggle:hover {
+  animation: wiggle 1s ease-in-out;
+}
+
+@layer utilities {
+  .bg-navy-900 {
+    background-color: var(--navy-900);
+  }
+}
