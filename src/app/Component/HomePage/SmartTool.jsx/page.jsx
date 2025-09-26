@@ -37,7 +37,7 @@ const products = [
     subtitle: "Online Booking & Scheduling Software",
     description:
       "Automate appointments, reservations, and scheduling with reminders and calendar integrations.",
-    image: "/Assests/Image/insta-booking.png",
+    image: "/Assests/Image/booking.png",
     reverse: false,
     buttons: [
       { label: "Try InstaBooking", type: "try" },
