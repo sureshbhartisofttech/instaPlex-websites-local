@@ -72,7 +72,7 @@ const Footer = () => {
             title: "Contact Us",
             key: "contact",
             links: [
-                { text: "instaplexsolutions@gmail.com", href: "mailto:instaplexsolutions@gmail.com" },
+                { text: "info@instaplex.in", href: "mailto:info@instaplex.in" },
                 { text: "+91 9368303030", href: "tel:+919368303030" }
             ]
         },
@@ -151,7 +151,7 @@ const Footer = () => {
                                                 {section.links.map((link, idx) => (
                                                     <li key={idx} className="break-words">
                                                         <div className="flex items-start space-x-2">
-                                                            {link.href && link.href.startsWith("mailto:") && <FaEnvelope className="w-8 h-8 text-gray-700 mt-1" />}
+                                                            {link.href && link.href.startsWith("mailto:") && <FaEnvelope className="w-4 h-4 text-gray-700 mt-1" />}
                                                             {link.href && link.href.startsWith("tel:") && <FaPhone className="w-4 h-4 text-gray-700 mt-1" />}
                                                             <Link
                                                                 href={link.href ? link.href : "#"}
@@ -184,7 +184,7 @@ const Footer = () => {
                                 ))}
                             </div>
                             <div className="text-sm text-gray-600">
-                                © 2025 InstaPlex Solutions Pvt. Ltd. All rights reserved.
+                                © 2025 InstaPlex Solutions Pvt. Ltd. (formally known as R-Bharti SoftTech) All rights reserved.
                             </div>
                         </div>
                     </div>

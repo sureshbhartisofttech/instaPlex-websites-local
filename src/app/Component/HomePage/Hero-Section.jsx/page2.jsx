@@ -10,9 +10,10 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import LeadFormModal from '../../Common/LeadFormModal';
+import HeroAnimatedText from '../../Common/MotionUi/page';
 
-const img = "/Assests/Herosection/insta-shield-5.png";
-const img2 = "/Assests/Herosection/crm3.png";
+const img = "/Assests/Herosection/monitor.png";
+const img2 = "/Assests/Image/crmImg.png";
 const img3 = "/Assests/Herosection/sarathi.png";
 const img4 = "/Assests/Herosection/insta-social.png";
 const img5 = "/Assests/Herosection/insta-learn.png";
@@ -28,50 +29,50 @@ const Herosection = () => {
       id: "crm",
       name: "Insta CRM",
       icon: Users,
-      description: "Real-time team communication",
+      description: "AI-powered CRM for sales teams",
       image: img2
     },
     {
       id: "shield",
-      name: "Insta Monitoring",
+      name: "Insta Monitor",
       icon: Shield,
-      description: "Manage and track your tasks efficiently",
+      description: "AI-powered employee monitoring",
       image: img
     },
     {
       id: "booking",
       name: "Insta Booking",
       icon: CalendarCheck,
-      description: "AI-powered productivity assistant",
+      description: "Online appointment scheduling",
       image: img6
     },
     {
       id: "social",
       name: "Insta Social",
       icon: Share2,
-      description: "Agile sprint management",
+      description: "Manage social media accounts",
       image: img4
     },
     {
       id: "partner",
       name: "Insta Partner",
       icon: Handshake,
-      description: "Track time across projects",
+      description: "Collaborate with partners",
       image: img3
     },
     {
       id: "lms",
-      name: "Insta LMS",
+      name: "Insta Learn",
       icon: GraduationCap,
-      description: "Track time across projects",
+      description: "Learning management system",
       image: img5
     }
   ];
 
   // Product options for the modal
   const productOptions = [
-    "Insta CRM", 
-    "Insta Monitoring",
+    "Insta CRM",
+    "Insta Monitor",
     "Insta Booking",
     "Insta Social",
     "Insta Learn",
@@ -106,7 +107,9 @@ const Herosection = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-400 py-20 px-4 sm:px-6 lg:px-8 w-full">
+    <div className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 w-full">
+      {/* Grid Background Overlay */}
+      <div className="absolute inset-0 -z-10 bg-[url('/Assests/Herosection/hero-bg.jpeg')] bg-cover bg-center" />
       {/* Bottom Blur Overlay */}
       <div className="absolute inset-x-0 bottom-0 h-32 hidden lg:block
         backdrop-blur-md 
@@ -116,22 +119,10 @@ const Herosection = () => {
       <div className="flex flex-col justify-center items-center ">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 lg:mb-6">
-            InstaPlex Solutions <br />
-            {` `}
-            Smart & Scalable Business Software
-          </h1>
-          <div className="text-lg sm:text-xl text-gray-600 font-medium opacity-80">
-            At InstaPlex Solutions, we deliver innovative business software solutions designed to
-            accelerate growth.
-          </div>
-          <div className="text-lg sm:text-xl text-gray-600 font-medium opacity-80 mb-8">
-            From CRM software and partner management systems to ecommerce platforms and real-time monitoring tools, our products help businesses
-            work smarter and scale faster
-          </div>
-          <button 
+          <HeroAnimatedText />
+          <button
             onClick={handleConnectClick}
-            className="bg-[#0040df] hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-2xl text-xl transition-all duration-200 transform hover:scale-105 shadow-lg"
+            className="bg-[#0040df] hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-all duration-200 transform hover:scale-105 shadow-lg"
           >
             Let's Connect
           </button>
@@ -145,17 +136,25 @@ const Herosection = () => {
               className={`bg-white rounded-xl shadow-xl overflow-hidden border-2 border-white transition-all duration-300  ${shouldBlurImage() ? 'filter blur-sm' : 'filter blur-none'
                 }`}
             >
-              <img
+              <Image
                 src={getDisplayedImage()}
                 alt="Workspace interface"
-                className="w-full h-[75vh] object-cover transition-all duration-300"
+                width={500}
+                height={500}
+                quality={100}
+                title='Workspace interface'
+                loading='eager'
+                objectFit='cover'
+                objectPosition="center"
+                aspectRatio='auto'
+                className="w-full h-[75vh] transition-all duration-300"
               />
               {shouldBlurImage() && (
                 // Blur + color only at bottom
                 <div
                   className="absolute inset-x-0 bottom-0 h-16
       backdrop-blur-md
-      bg-gradient-to-t from-blue-50 via-white  to-transparent
+      bg-gradient-to-t from-blue-100 via-white  to-transparent
       pointer-events-none"
                 />
               )}
@@ -178,13 +177,13 @@ const Herosection = () => {
                       onMouseEnter={() => setHoveredProduct(product.id)}
                       onMouseLeave={() => setHoveredProduct(null)}
                       className={`p-4 rounded-lg border-2 transition-all duration-200 hover:shadow-md group ${activeProduct === product.id
-                        ? 'border-purple-500 bg-purple-50'
-                        : 'border-gray-200 hover:border-purple-300'
+                        ? 'border-blue-500 bg-blue-50'
+                        : 'border-gray-200 hover:border-blue-600'
                         }`}
                     >
-                      <Icon className={`w-6 h-6 mx-auto mb-2 ${activeProduct === product.id ? 'text-purple-600' : 'text-gray-600 group-hover:text-purple-600'
+                      <Icon className={`w-6 h-6 mx-auto mb-2 ${activeProduct === product.id ? 'text-blue-600' : 'text-gray-600 group-hover:text-blue-600'
                         }`} />
-                      <span className={`text-xs font-medium block ${activeProduct === product.id ? 'text-purple-900' : 'text-gray-700'
+                      <span className={`text-xs font-medium block ${activeProduct === product.id ? 'text-blue-900' : 'text-gray-700'
                         }`}>
                         {product.name}
                       </span>
@@ -192,9 +191,9 @@ const Herosection = () => {
                   );
                 })}
               </div>
-              <button 
+              <button
                 onClick={handleConnectClick}
-                className="w-full bg-[#0040df] hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-200 transform hover:scale-105"
+                className="w-full bg-[#0040df] hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
               >
                 Explore Our Software Suite
               </button>
@@ -204,55 +203,18 @@ const Herosection = () => {
 
         {/* Mobile Layout */}
         <div className="lg:hidden">
-          <div className="bg-white rounded-xl shadow-xl p-6 mb-6">
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              {products.slice(0, 9).map((product) => {
-                const Icon = product.icon;
-                return (
-                  <button
-                    key={product.id}
-                    onClick={() => handleProductClick(product.id)}
-                    className={`flex flex-col items-center p-3 rounded-lg transition-all duration-200 ${activeProduct === product.id
-                      ? 'bg-purple-100 border-2 border-blue-500'
-                      : 'bg-gray-50 hover:bg-gray-100'
-                      }`}
-                  >
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${product.id === 'tasks' ? 'bg-blue-500' :
-                      product.id === 'chat' ? 'bg-purple-500' :
-                        product.id === 'docs' ? 'bg-blue-600' :
-                          product.id === 'calendar' ? 'bg-gray-800' :
-                            product.id === 'ai' ? 'bg-pink-500' :
-                              product.id === 'time-tracking' ? 'bg-green-500' :
-                                product.id === 'sprints' ? 'bg-purple-600' :
-                                  product.id === 'dashboards' ? 'bg-gray-700' :
-                                    'bg-orange-500'
-                      }`}>
-                      <Icon className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-xs font-medium text-gray-700">{product.name}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="text-center mb-4">
-              <span className="text-sm text-gray-600">and so much more...</span>
-            </div>
-
-            <button 
-              onClick={handleConnectClick}
-              className="w-full bg-[#0040df] text-white font-semibold py-3 px-6 rounded-2xl mb-4"
-            >
-              Explore Our Software Suite
-            </button>
-          </div>
-
           {/* Mobile Image Display */}
           {(activeProduct || hoveredProduct) && (
-            <div className="bg-white rounded-xl shadow-xl overflow-hidden h-72">
+            <div className="bg-white rounded-xl  overflow-hidden h-72 mb-2">
               <Image
                 src={getDisplayedImage()}
                 alt="Selected workspace feature"
+                quality={100}
+                loading='eager'
+                title='Product Image'
+                objectFit='contain'
+                objectPosition="center"
+                aspectRatio='auto'
                 className="w-full h-48 object-cover"
                 width={100}
                 height={100}
@@ -267,11 +229,44 @@ const Herosection = () => {
               </div>
             </div>
           )}
+          <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+            <div className="grid grid-cols-3 gap-5 mb-6">
+              {products.slice(0, 9).map((product) => {
+                const Icon = product.icon;
+                return (
+                  <button
+                    key={product.id}
+                    onClick={() => handleProductClick(product.id)}
+                    className={`flex flex-col items-center py-2 px-[1px] rounded-lg transition-all duration-200 ${activeProduct === product.id
+                      ? 'bg-blue-100 border-2 border-blue-500'
+                      : 'bg-gray-50 hover:bg-gray-100'
+                      }`}
+                  >
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-2 bg-blue-500">
+                      <Icon className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-xs font-medium text-gray-700">{product.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="text-center mb-4">
+              <span className="text-sm text-gray-600">and so much more...</span>
+            </div>
+
+            <button
+              onClick={handleConnectClick}
+              className="w-full bg-[#0040df] text-white font-semibold py-3 px-6 rounded-lg mb-4"
+            >
+              Explore Our Software Suite
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Lead Form Modal */}
-      <LeadFormModal 
+      <LeadFormModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         defaultProduct=""

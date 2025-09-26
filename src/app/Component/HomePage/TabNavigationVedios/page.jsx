@@ -22,7 +22,7 @@ const Descriptions = [
 ];
 
 const WorkspaceDemo = () => {
-  const [activeIndex, setActiveIndex] = useState(0); // which accordion is open (null => all collapsed)
+  const [activeIndex, setActiveIndex] = useState(0);
   const videoRefs = useRef([]);
 
   const pauseAndReset = (idx) => {
@@ -52,7 +52,7 @@ const WorkspaceDemo = () => {
     setActiveIndex((prev) => {
       if (prev === idx) {
         pauseAndReset(idx);
-        return null; // collapse all
+        return null; 
       } else {
         if (prev !== null && prev !== undefined) pauseAndReset(prev);
         queueMicrotask(() => playOnly(idx));
@@ -65,16 +65,16 @@ const WorkspaceDemo = () => {
     <div className="px-4 sm:px-8">
       {/* Header */}
       <div className="text-center mx-auto px-4 py-10">
-        <p className="text-sm text-purple-600 font-medium">
+        <p className="text-sm text-[#0040df] font-medium">
           The <span className="italic">all-in-one</span> workspace
         </p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mt-2">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
           Do your most important work, faster
         </h2>
         <p className="text-black mt-3 text-base sm:text-lg font-semibold">
           From campaigns to operations and more, this is just the tip of the iceberg.
         </p>
-        <button className="mt-6 px-5 py-2 bg-black text-white rounded-lg text-sm sm:text-md font-semibold hover:bg-gray-800 transition-all">
+        <button className="mt-6 px-5 py-2 bg-black text-white rounded-lg text-md font-semibold hover:bg-gray-800 transition-all">
           See all use cases →
         </button>
       </div>
@@ -88,7 +88,7 @@ const WorkspaceDemo = () => {
               <div
                 key={label + i}
                 className={`rounded-2xl border overflow-hidden transition-all duration-200
-                  ${open ? "border-purple-200 ring-1 ring-purple-200 bg-white" : "border-gray-200 bg-white"}`}
+                  ${open ? "border-blue-200 ring-1 ring-blue-200 bg-white" : "border-gray-200 bg-white"}`}
               >
                 {/* Header */}
                 <button
@@ -97,11 +97,11 @@ const WorkspaceDemo = () => {
                 >
                   <span
                     className={`absolute left-0 top-0 h-full w-1 transition-opacity ${
-                      open ? "bg-purple-600 opacity-100" : "opacity-0"
+                      open ? "bg-[#0040df] opacity-100" : "opacity-0"
                     }`}
                   />
                   <div className="pl-3 flex-1">
-                    <h3 className={`text-base font-semibold ${open ? "text-purple-700" : "text-gray-900"}`}>
+                    <h3 className={`text-base font-semibold ${open ? "text-[#0040df]" : "text-gray-900"}`}>
                       {label}
                     </h3>
                     <p className={`mt-1 text-sm ${open ? "text-gray-600" : "text-gray-500"}`}>
@@ -152,7 +152,7 @@ const WorkspaceDemo = () => {
                 }}
                 className={`text-left transition-all ${
                   activeIndex === index
-                    ? "text-purple-700 font-semibold border-l-2 border-purple-700 pl-3"
+                    ? "text-[#0040df] font-semibold border-l-2 border-[#0040df] pl-3"
                     : "text-gray-400 hover:text-black pl-3"
                 }`}
               >

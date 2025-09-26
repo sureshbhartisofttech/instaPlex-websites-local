@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.2.0",
     "embla-carousel-autoplay": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
+    "framer-motion": "^12.23.13",
     "install": "^0.13.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.468.0",

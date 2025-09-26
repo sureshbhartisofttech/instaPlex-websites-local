@@ -44,7 +44,7 @@ export default function Testimonials() {
         <div className="px-4 py-10">
             {/* Header */}
             <div className="text-center mb-10">
-                <p className="text-sm text-purple-600 font-medium italic">
+                <p className="text-sm text-[#0040df] font-medium italic">
                     Testimonials
                 </p>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-2">

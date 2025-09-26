@@ -9,7 +9,7 @@ import TestimonialSlider from "./Component/HomePage/TestimonialSlider/page";
 import NewProductSection from "./Component/HomePage/WhatsNew/page";
 import Footer from "./Component/Common/Footer/page";
 import IntegrationSection from "./Component/HomePage/Integration/page";
-import Herosection from "./Component/HomePage/Hero-Section.jsx/page";
+import Herosection from "./Component/HomePage/Hero-Section.jsx/page2";
 import ProductivityLanding from "./Component/HomePage/Productive/page";
 import WorkspaceDemo from "./Component/HomePage/TabNavigationVedios/page";
 import SmartToolsSection from "./Component/HomePage/SmartTool.jsx/page";
@@ -20,9 +20,9 @@ export default function Home() {
     <>
       <Navbar />
       <Herosection />
+      <SmartToolsSection />
       <ProductivityLanding />
       <WorkspaceDemo />
-      <SmartToolsSection />
       <Testimonials/>
       <IntegrationSection />
       {/* <TrustedBrands /> */}

@@ -1,282 +1,187 @@
+"use client";
 import Image from "next/image";
+import React, { useState } from "react";
 import Link from "next/link";
-import React from "react";
-const CRMImage = "/Assests/Image/CRM.png";
-const InstaShield = "/Assests/Image/Insta-shield-2.png";
-const InstaBooking = "/Assests/Image/Insta-Booking.png";
-const InstaPartner = "/Assests/Image/Insta-Partner.png";
-const InstaCall = "/Assests/Image/Insta-Calling.png";
-const rightImage = "/Assests/Image/Lms.png";
-const InstaShop = "/Assests/Image/Insta-Shop.png";
+import LeadFormModal from "../../Common/LeadFormModal";
+
+const products = [
+  {
+    id: "instacrm",
+    title: "InstaCRM",
+    subtitle: "Smart Customer Relationship Management Software",
+    description:
+      "Boost sales and engagement with InstaCRM — a smart CRM software for lead management, sales automation, customer tracking, and reporting.",
+    image: "/Assests/Image/image.jpg",
+    reverse: false,
+    buttons: [
+      { label: "Try InstaCRM", type: "try" },
+      { label: "Learn more", href: "https://www.instaconnectcrm.com/", type: "learn" },
+    ],
+  },
+  {
+    id: "instamonitor",
+    title: "InstaMonitor",
+    subtitle: "Real-Time Monitoring Solutions",
+    description:
+      "Track business processes, employee activity monitoring, and system performance with real-time dashboards and alerts.",
+    image: "/Assests/Image/Insta-shield-2.png",
+    reverse: true,
+    buttons: [
+      { label: "Try InstaMonitor", type: "try" },
+      { label: "Learn more", href: "https://example.com/monitoring", type: "learn" },
+    ],
+  },
+  {
+    id: "instabooking",
+    title: "InstaBooking",
+    subtitle: "Online Booking & Scheduling Software",
+    description:
+      "Automate appointments, reservations, and scheduling with reminders and calendar integrations.",
+    image: "/Assests/Image/Insta-Booking.png",
+    reverse: false,
+    buttons: [
+      { label: "Try InstaBooking", type: "try" },
+      { label: "Learn more", href: "https://example.com/booking", type: "learn" },
+    ],
+  },
+  {
+    id: "instalearn",
+    title: "InstaLearn",
+    subtitle: "Learning & Training Management Platform",
+    description:
+      "Deliver interactive online learning, corporate training, and assessments with InstaLearn – a modern LMS platform.",
+    image: "/Assests/Image/Lms.png",
+    reverse: true,
+    buttons: [
+      { label: "Try InstaLearn", type: "try" },
+      { label: "Learn more", href: "https://example.com/learn", type: "learn" },
+    ],
+  },
+  {
+    id: "instapartner",
+    title: "InstaPartner",
+    subtitle: "Partner Ecosystem Management Software",
+    description:
+      "Simplify onboarding and collaboration with InstaPartner — a complete solution for distributor, reseller, and affiliate management.",
+    image: "/Assests/Image/Insta-Partner.png",
+    reverse: false,
+    buttons: [
+      { label: "Try InstaPartner", type: "try" },
+      { label: "Learn more", href: "https://example.com/partner", type: "learn" },
+    ],
+  },
+  {
+    id: "instashop",
+    title: "InstaShop",
+    subtitle: "Scalable E-Commerce Solutions",
+    description:
+      "Launch and grow your online business with InstaShop, offering custom storefronts, secure payments, inventory management, and marketing tools.",
+    image: "/Assests/Image/Insta-Shop.png",
+    reverse: true,
+    buttons: [{ label: "Try InstaShop", type: "try" }],
+  },
+  {
+    id: "instacall",
+    title: "InstaCalling",
+    subtitle: "Business Communication & Calling Tools",
+    description:
+      "Enhance communication with VoIP calling, integrated messaging, and call tracking features for teams and customer support.",
+    image: "/Assests/Image/Insta-Calling.png",
+    reverse: false,
+    buttons: [
+      { label: "Try InstaCalling", type: "try" },
+      { label: "Learn more", href: "https://example.com/calling", type: "learn" },
+    ],
+  },
+];
+
+function ButtonGroup({ buttons, onTryClick }) {
+  return (
+    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+      {buttons.map((btn, i) =>
+        btn.type === "learn" ? (
+          <Link
+            key={i}
+            href={btn.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 font-semibold text-md rounded-lg transition bg-black text-white hover:bg-gray-900"
+          >
+            {btn.label}
+          </Link>
+        ) : (
+          <button
+            key={i}
+            onClick={() => onTryClick(btn.label)}
+            className="px-4 py-2 font-semibold text-md rounded-lg transition bg-[#0040df] text-white hover:opacity-90"
+          >
+            {btn.label}
+          </button>
+        )
+      )}
+    </div>
+  );
+}
+
+function ProductSection({ id, title, subtitle, description, image, reverse, buttons, onTryClick }) {
+  return (
+    <section
+      className={`w-full px-6 md:px-32 py-12 flex flex-col md:flex-row items-center gap-10 ${
+        reverse ? "md:flex-row-reverse" : ""
+      }`}
+    >
+      <div className="flex-1">
+        <Image src={image} alt={title} width={450} height={400} className="rounded-xl" />
+      </div>
+      <div className="flex-1 text-center md:text-left">
+        <p className="text-4xl font-medium text-[#0040df] mb-3 italic">{title}</p>
+        <h2 className="text-xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+          {subtitle}
+        </h2>
+        <p className="text-lg md:text-xl text-gray-700 mb-8">{description}</p>
+        <ButtonGroup buttons={buttons} onTryClick={(label) => onTryClick(id, title)} />
+      </div>
+    </section>
+  );
+}
 
 export default function SmartToolsSection() {
-    return (
-        <div >
-            {/* Top Header */}
-            <div className="text-center mx-auto px-4 py-10 ">
-                <p className="text-sm text-purple-600 font-medium">
-                    The <span className="italic">10x your work with smarter tools </span> workspace
-                </p>
-                <h2 className="text-5xl font-bold text-gray-900 mt-2">
-                    Smart products for smarter workflows
-                </h2>
-                <p className="text-black mt-3 text-lg font-semibold">
-                    Work smarter in every way.
-                </p>
-                <button className="mt-6 px-5 py-2 bg-black text-white rounded-lg text-md font-semibold hover:bg-gray-800 transition-all">
-                    See all use cases →
-                </button>
-            </div>
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState("");
 
-            {/* Main Section */}
-            {/* InstaCRM */}
-            <section className="w-full px-6 md:px-32 py-12 flex flex-col md:flex-row items-center">
-                {/* Left Side - Image */}
-                <div className="flex-1">
-                    <Image
-                        title="Insta CRM"
-                        src={CRMImage}
-                        alt="Insta CRM"
-                        width={450}
-                        height={400}
-                        className="rounded-xl shadow-lg"
-                    />
-                </div>
+  const handleTryClick = (id, title) => {
+    setSelectedProduct(title);
+    setIsModalOpen(true);
+  };
 
-                {/* Right Side - Content */}
-                <div className="flex-1 text-center md:text-left">
-                    <p className="text-lg font-medium text-purple-600 mb-3 italic">InstaCRM</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Smart Customer Relationship Management Software
-                    </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8">
-                        <span className="font-bold">Boost sales and engagement with InstaCRM</span>  a smart CRM software for lead
-                        management, sales automation, customer tracking, and reporting.
-                    </p>
+  return (
+    <div>
+      {/* Top Header */}
+      <div className="text-center mx-auto px-4 py-0 lg:py-10">
+        <p className="text-sm text-[#0040df] font-medium">
+          The <span className="italic">10x your work with smarter tools </span> workspace
+        </p>
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
+          Smart products for smarter workflows
+        </h2>
+        <p className="text-black mt-3 text-lg font-semibold">Work smarter in every way.</p>
+        <button className="mt-6 px-5 py-2 bg-black text-white rounded-lg text-md font-semibold hover:bg-gray-800 transition-all">
+          See all use cases →
+        </button>
+      </div>
 
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <Link type="button" href="https://www.instaconnectcrm.com/"  className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-semibold text-md rounded-lg hover:opacity-90 transition">
-                            Try InstaCRM
-                        </Link>
-                        <Link type="button" href="https://www.instaconnectcrm.com/" className="px-4 py-2 bg-black text-white font-semibold text-md rounded-lg hover:bg-gray-900 transition">
-                            Learn more
-                        </Link>
-                    </div>
-                </div>
-            </section>
-            {/* InstaMonitor */}
-            <section className="w-full px-6 md:px-32 py-12 flex flex-col md:flex-row items-center gap-10">
-                {/* Left Side - Content */}
-                <div className="flex-1 text-center md:text-left">
-                    <p className="text-lg font-medium text-purple-600 mb-3 italic">InstaMonitor</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Real-Time Monitoring Solutions
-                    </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8">
-                        <span className="font-bold">Track business processes, employee activity monitoring,</span> and system performance with
-                        real-time dashboards and alerts
-                    </p>
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <button className="px-10 py-2 bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-semibold text-md rounded-lg hover:opacity-90 transition">
-                            Try InstaMonitoring
-                        </button>
-                        {/* <button className="px-6 py-3 bg-black text-white font-semibold text-lg rounded-lg hover:bg-gray-900 transition">
-                            Learn more
-                        </button> */}
-                    </div>
+      {/* Render all product sections */}
+      {products.map((product) => (
+        <ProductSection key={product.id} {...product} onTryClick={handleTryClick} />
+      ))}
 
-                </div>
-                {/* Right Side - Image */}
-                <div className="flex-1">
-                    <Image
-                        title="InstaMonitoring"
-                        src={InstaShield}
-                        alt="InstaMonitoring"
-                        width={450}
-                        height={400}
-                        className="rounded-xl shadow-lg"
-                    />
-                </div>
-            </section>
-            {/* InstaBooking */}
-            <section className="w-full px-6 md:px-36 py-12 flex flex-col md:flex-row items-center gap-10">
-                {/* Left Side - Image */}
-                <div className="flex-1">
-                    <Image
-                        src={InstaBooking}
-                        alt="AI Tools"
-                        width={450}
-                        height={400}
-                        className="rounded-xl shadow-lg"
-                    />
-                </div>
-
-                {/* Right Side - Content */}
-                <div className="flex-1 text-center md:text-left">
-                    <p className="text-lg font-medium text-purple-600 mb-3 italic">InstaBooking</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Online Booking & Scheduling Software
-                    </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8">
-                        <span className="font-bold">Automate appointments, reservations, and scheduling</span> with reminders and calendar integrations.
-                    </p>
-
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <button className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-semibold text-md rounded-lg hover:opacity-90 transition">
-                            Try InstaBooking
-                        </button>
-                        <button className="px-4 py-2 bg-black text-white font-semibold text-md rounded-lg hover:bg-gray-900 transition">
-                            Learn more
-                        </button>
-                    </div>
-                </div>
-            </section>
-            {/* InstaLearn */}
-            <section className="w-full px-6 md:px-36 py-12 flex flex-col md:flex-row items-center gap-10">
-                {/* Left Side - Content */}
-                <div className="flex-1 text-center md:text-left">
-                    <p className="text-lg font-medium text-purple-600 mb-3 italic">InstaLearn</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Learning & Training Management Platform
-                    </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8">
-                        <span className="font-bold">Deliver interactive online learning, corporate training, </span>   , and assessments with InstaLearn
-                        – a modern LMS platform.
-                    </p>
-
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <button className="px-10 py-2 bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-semibold text-md rounded-lg hover:opacity-90 transition">
-                            Try InstaLearn
-                        </button>
-                        {/* <button className="px-6 py-3 bg-black text-white font-semibold text-lg rounded-lg hover:bg-gray-900 transition">
-                            Learn more
-                        </button> */}
-                    </div>
-                </div>
-                {/* Right Side - Image */}
-                <div className="flex-1">
-                    <Image
-                        src={rightImage}
-                        alt="AI Tools"
-                        width={450}
-                        height={400}
-                        className="rounded-xl shadow-lg"
-                    />
-                </div>
-            </section>
-            {/* InstaPartner */}
-            <section className="w-full px-6 md:px-32 py-12 flex flex-col md:flex-row items-center">
-                {/* Left Side - Image */}
-                <div className="flex-1">
-                    <Image
-                        title="InstaPartner"
-                        src={InstaPartner}
-                        alt="InstaPartner"
-                        width={450}
-                        height={400}
-                        className="rounded-xl shadow-lg"
-                    />
-                </div>
-
-                {/* Right Side - Content */}
-                <div className="flex-1 text-center md:text-left">
-                    <p className="text-lg font-medium text-purple-600 mb-3 italic">InstaPartner</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Partner Ecosystem Management Software
-
-                    </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8">
-                        <span className="font-bold">Simplify onboarding and collaboration with InstaPartner,</span>  a complete solution for
-                        distributor, reseller, and affiliate management.
-
-                    </p>
-
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <button className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-semibold text-md rounded-lg hover:opacity-90 transition">
-                            Try InstaPartner
-                        </button>
-                        <button className="px-4 py-2 bg-black text-white font-semibold text-md rounded-lg hover:bg-gray-900 transition">
-                            Learn more
-                        </button>
-                    </div>
-                </div>
-            </section>
-            {/* InstaShop */}
-            <section className="w-full px-6 md:px-32 py-12 flex flex-col md:flex-row items-center gap-10">
-                {/* Left Side - Content */}
-                <div className="flex-1 text-center md:text-left">
-                    <p className="text-lg font-medium text-purple-600 mb-3 italic">InstaShop</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Scalable E-Commerce Solutions
-                    </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8">
-                        <span className="font-bold">Launch and grow your online business with InstaShop,</span> offering custom storefronts,
-                        secure payments, inventory management, and marketing tools.
-                    </p>
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <button className="px-10 py-2 bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-semibold text-md rounded-lg hover:opacity-90 transition">
-                            Try InstaShop
-                        </button>
-                        {/* <button className="px-6 py-3 bg-black text-white font-semibold text-lg rounded-lg hover:bg-gray-900 transition">
-                            Learn more
-                        </button> */}
-                    </div>
-
-                </div>
-                {/* Right Side - Image */}
-                <div className="flex-1">
-                    <Image
-                        title="InstaShop"
-                        src={InstaShop}
-                        alt="InstaShop"
-                        width={450}
-                        height={400}
-                        className="rounded-xl shadow-lg"
-                    />
-                </div>
-            </section>
-            {/* InstaCalling */}
-            <section className="w-full px-6 md:px-32 py-12 flex flex-col md:flex-row items-center">
-                {/* Left Side - Image */}
-                <div className="flex-1">
-                    <Image
-                        title="InstaCalling"
-                        src={InstaCall}
-                        alt="InstaCalling"
-                        width={450}
-                        height={400}
-                        className="rounded-xl shadow-lg"
-                    />
-                </div>
-
-                {/* Right Side - Content */}
-                <div className="flex-1 text-center md:text-left">
-                    <p className="text-lg font-medium text-purple-600 mb-3 italic">InstaCalling</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Business Communication & Calling Tools
-                    </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8">
-                        <span className="font-bold">Enhance communication with VoIP calling, integrated messaging, and call tracking</span> features for teams and customer support.
-
-                    </p>
-
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <button className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-semibold text-md rounded-lg hover:opacity-90 transition">
-                            Try InstaCalling
-                        </button>
-                        <button className="px-4 py-2 bg-black text-white font-semibold text-md rounded-lg hover:bg-gray-900 transition">
-                            Learn more
-                        </button>
-                    </div>
-                </div>
-            </section>
-        </div>
-    );
+      {/* Common Lead Form Modal */}
+      <LeadFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        defaultProduct={selectedProduct}
+        productOptions={products.map((p) => p.title)}
+      />
+    </div>
+  );
 }
