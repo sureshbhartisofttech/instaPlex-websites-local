@@ -11,7 +11,7 @@ const products = [
     subtitle: "Smart Customer Relationship Management Software",
     description:
       "Boost sales and engagement with InstaCRM — a smart CRM software for lead management, sales automation, customer tracking, and reporting.",
-    image: "/Assests/Image/image.jpg",
+    image: "/Assests/Image/Newcrm.png",
     reverse: false,
     buttons: [
       { label: "Try InstaCRM", type: "try" },
@@ -24,7 +24,7 @@ const products = [
     subtitle: "Real-Time Monitoring Solutions",
     description:
       "Track business processes, employee activity monitoring, and system performance with real-time dashboards and alerts.",
-    image: "/Assests/Image/Insta-shield-2.png",
+    image: "/Assests/Image/Newmonitor.png",
     reverse: true,
     buttons: [
       { label: "Try InstaMonitor", type: "try" },
@@ -37,7 +37,7 @@ const products = [
     subtitle: "Online Booking & Scheduling Software",
     description:
       "Automate appointments, reservations, and scheduling with reminders and calendar integrations.",
-    image: "/Assests/Image/booking.png",
+    image: "/Assests/Image/Newbooking.png",
     reverse: false,
     buttons: [
       { label: "Try InstaBooking", type: "try" },
