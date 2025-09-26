@@ -37,7 +37,7 @@ const products = [
     subtitle: "Online Booking & Scheduling Software",
     description:
       "Automate appointments, reservations, and scheduling with reminders and calendar integrations.",
-    image: "/Assests/Image/Insta-booking.png",
+    image: "/Assests/Image/insta-booking.png",
     reverse: false,
     buttons: [
       { label: "Try InstaBooking", type: "try" },
@@ -50,7 +50,7 @@ const products = [
     subtitle: "Learning & Training Management Platform",
     description:
       "Deliver interactive online learning, corporate training, and assessments with InstaLearn – a modern LMS platform.",
-    image: "/Assests/Image/Lms.png",
+    image: "/Assests/Image/lms.png",
     reverse: true,
     buttons: [
       { label: "Try InstaLearn", type: "try" },
